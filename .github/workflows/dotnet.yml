@@ -26,9 +26,12 @@ jobs:
       uses: actions/setup-dotnet@v2
       with:
         dotnet-version: 5.0.x
-        
-    - name: Restore dependencies
-      run: dotnet restore
+    - uses: nuget/setup-nuget@v1
+      with:
+        nuget-version: '5.x'
+    - run: nuget restore lowkey-vault-example-dotnet.sln
+    #- name: Restore dependencies
+     # run: dotnet restore
     - name: Build
       run: dotnet build --no-restore
     - name: Start Docker
