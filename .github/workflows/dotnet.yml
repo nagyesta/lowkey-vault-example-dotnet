@@ -18,7 +18,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -39,4 +39,5 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Stop Docker
+      if: always()
       run: docker stop lowkey
