@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "docker": {
+    "pinDigests": true
+  },
+  "github-actions": {
+    "pinDigests": true
+  }
+}
