@@ -21,12 +21,12 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@c0d4ad69d8bd405d234f1c9166d383b7a4f69ed8 # tag=v2
       with:
         dotnet-version: 5.0.x
-    - uses: nuget/setup-nuget@v1
+    - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
       with:
         nuget-version: '5.x'
     - run: nuget restore lowkey-vault-example-dotnet.sln
