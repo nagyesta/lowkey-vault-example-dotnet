@@ -40,10 +40,8 @@ jobs:
         java-version: 11
     - name: Build
       run: dotnet build --no-restore
-    - name: Start Jar
-      run: java -jar lowkey.jar &
     - name: Test
-      run: dotnet test --no-build --verbosity normal
-    - name: Stop Jar
-      if: always()
-      run: Stop-Job -Name "Job1"
+      run:  |
+        java -jar lowkey.jar &
+        dotnet test --no-build --verbosity normal
+        Stop-Job -Name "Job1"
