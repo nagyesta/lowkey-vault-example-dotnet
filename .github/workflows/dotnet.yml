@@ -46,4 +46,4 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: Stop Jar
       if: always()
-      run: taskkill /IM "java.exe" /F
+      run: Stop-Job -Name "Job1"
