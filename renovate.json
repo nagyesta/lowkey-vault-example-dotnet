@@ -1,7 +1,12 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":gitSignOff"
   ],
+  "assignees": [
+    "nagyesta"
+  ],
+  "assigneesSampleSize": 1,
   "docker": {
     "pinDigests": true
   },
