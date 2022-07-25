@@ -29,7 +29,10 @@ jobs:
     - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
       with:
         nuget-version: '5.x'
-    - run: nuget restore lowkey-vault-example-dotnet.sln
+    - name: NuGet Restore .NET Framework project
+      run: nuget restore dotnet-framework/lowkey-vault-example-dotnet.sln
+    - name: NuGet Restore .NET Core project
+      run: nuget restore dotnet-core/lowkey-vault-example-dotnet.sln
     - name: Download jar
       run: |
         curl https://repo1.maven.org/maven2/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.8.10/lowkey-vault-app-1.8.10.jar --output lowkey.jar
