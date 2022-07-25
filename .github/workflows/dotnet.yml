@@ -45,3 +45,10 @@ jobs:
         java -jar lowkey.jar &
         dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
+    - name: Build .NET Core project
+      run: dotnet build dotnet-core/lowkey-vault-example-dotnet-core.sln --no-restore
+    - name: Test .NET Core Project
+      run:  |
+        java -jar lowkey.jar &
+        dotnet test dotnet-framework/lowkey-vault-example-dotnet-core.sln --no-build --verbosity normal
+        Stop-Job -Name "Job1"

@@ -1,3 +1,9 @@
 /.idea/
 /*/bin
 /*/obj
+/*/*.DotSettings.user
+
+.idea/
+bin
+obj
+*.DotSettings.user
