@@ -19,7 +19,6 @@ namespace test
         {
             //given
             const string secretMessage = "a secret message";
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             TokenCredential credential = new NoopCredentials();
             var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential, GetKeyClientOptions());
             const string keyName = "rsa-key";
@@ -49,7 +48,6 @@ namespace test
             const string serverName = "ServerName\\InstanceName";
             const string userName = "admin";
             const string password = "secret123";
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             TokenCredential credential = new NoopCredentials();
             var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetSecretClientOptions());
             secretClient.SetSecret(serverNameSecret, serverName);
