@@ -20,7 +20,7 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new NoopCredentials();
-            var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential, GetKeyClientOptions());
+            var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(new KeyClientOptions()));
             const string keyName = "rsa-key";
             var createRsaKeyOptions = new CreateRsaKeyOptions(keyName)
             {
@@ -28,7 +28,7 @@ namespace test
                 KeyOperations = { KeyOperation.Encrypt, KeyOperation.Decrypt, KeyOperation.WrapKey, KeyOperation.UnwrapKey }
             };
             keyClient.CreateKey(keyName, KeyType.Rsa, createRsaKeyOptions);
-            var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetCryptographyClientOptions());
+            var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetClientOptions(new CryptographyClientOptions()));
             
             //when
             var encrypted = underTest.Encrypt(secretMessage);
@@ -49,7 +49,7 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new NoopCredentials();
-            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetSecretClientOptions());
+            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(new SecretClientOptions()));
             secretClient.SetSecret(serverNameSecret, serverName);
             secretClient.SetSecret(userNameSecret, userName);
             secretClient.SetSecret(passwordSecret, password);
@@ -66,28 +66,19 @@ namespace test
             Assert.AreEqual(userName, actualUserName);
             Assert.AreEqual(password, actualPassword);
         }
-
-        private KeyClientOptions GetKeyClientOptions()
+        
+        private T GetClientOptions<T>(T options) where T : ClientOptions
         {
-            var options = new KeyClientOptions();
             DisableSslValidationOnClientOptions(options);
             return options;
         }
 
-        private SecretClientOptions GetSecretClientOptions()
-        {
-            var options = new SecretClientOptions();
-            DisableSslValidationOnClientOptions(options);
-            return options;
-        }
-
-        private CryptographyClientOptions GetCryptographyClientOptions()
-        {
-            var options = new CryptographyClientOptions();
-            DisableSslValidationOnClientOptions(options);
-            return options;
-        }
-
+        /// <summary>
+        /// Disables server certification callback.
+        /// <br/>
+        /// <b>WARNING: Do not use in production environments.</b>
+        /// </summary>
+        /// <param name="options"></param>
         private void DisableSslValidationOnClientOptions(ClientOptions options)
         {
             HttpClientHandler clientHandler = new HttpClientHandler();
