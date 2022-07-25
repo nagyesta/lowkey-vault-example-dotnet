@@ -38,10 +38,10 @@ jobs:
       with:
         distribution: temurin
         java-version: 11
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
+    - name: Build .NET Framework Project
+      run: dotnet build dotnet-framework/lowkey-vault-example-dotnet.sln --no-restore
+    - name: Test .NET Framework Project
       run:  |
         java -jar lowkey.jar &
-        dotnet test --no-build --verbosity normal
+        dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
