@@ -32,7 +32,7 @@ jobs:
     - name: NuGet Restore .NET Framework project
       run: nuget restore dotnet-framework/lowkey-vault-example-dotnet.sln
     - name: NuGet Restore .NET Core project
-      run: nuget restore dotnet-core/lowkey-vault-example-dotnet.sln
+      run: nuget restore dotnet-core/lowkey-vault-example-dotnet-core.sln
     - name: Download jar
       run: |
         curl https://repo1.maven.org/maven2/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.8.10/lowkey-vault-app-1.8.10.jar --output lowkey.jar
