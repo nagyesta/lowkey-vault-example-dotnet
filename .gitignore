@@ -4,3 +4,8 @@
 /*/obj
 /packages
 
+lowkey-vault-example-dotnet.sln.DotSettings.user
+.idea/
+*/bin
+*/obj
+packages

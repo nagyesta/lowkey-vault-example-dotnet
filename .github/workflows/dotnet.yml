@@ -29,7 +29,10 @@ jobs:
     - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
       with:
         nuget-version: '5.x'
-    - run: nuget restore lowkey-vault-example-dotnet.sln
+    - name: NuGet Restore .NET Framework project
+      run: nuget restore dotnet-framework/lowkey-vault-example-dotnet.sln
+    - name: NuGet Restore .NET Core project
+      run: nuget restore dotnet-core/lowkey-vault-example-dotnet-core.sln
     - name: Download jar
       run: |
         curl https://repo1.maven.org/maven2/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.8.10/lowkey-vault-app-1.8.10.jar --output lowkey.jar
@@ -38,10 +41,17 @@ jobs:
       with:
         distribution: temurin
         java-version: 11
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
+    - name: Build .NET Framework Project
+      run: dotnet build dotnet-framework/lowkey-vault-example-dotnet.sln --no-restore
+    - name: Test .NET Framework Project
       run:  |
         java -jar lowkey.jar &
-        dotnet test --no-build --verbosity normal
+        dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
+        Stop-Job -Name "Job1"
+    - name: Build .NET Core project
+      run: dotnet build dotnet-core/lowkey-vault-example-dotnet-core.sln --no-restore
+    - name: Test .NET Core Project
+      run:  |
+        java -jar lowkey.jar &
+        dotnet test dotnet-core/lowkey-vault-example-dotnet-core.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"

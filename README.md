@@ -11,10 +11,19 @@ a key is used for encrypt/decrypt operations and database connection specific cr
 
 ### Points of interest
 
-* [Key "repository"](src/AzureKeyVaultKeyRepository.cs)
-* [Secret "repository"](src/AzureKeyVaultSecretRepository.cs)
-* [Empty credentials for connecting to Lowkey Vault](test/NoopCredentials.cs)
-* [Tests](test/Tests.cs)
+#### .NET Framework
+
+* [Key "repository"](dotnet-framework/src/AzureKeyVaultKeyRepository.cs)
+* [Secret "repository"](dotnet-framework/src/AzureKeyVaultSecretRepository.cs)
+* [Empty credentials for connecting to Lowkey Vault](dotnet-framework/test/NoopCredentials.cs)
+* [Tests](dotnet-framework/test/Tests.cs)
+
+#### .NET Core
+
+* [Key "repository"](dotnet-core/src/AzureKeyVaultKeyRepository.cs)
+* [Secret "repository"](dotnet-core/src/AzureKeyVaultSecretRepository.cs)
+* [Empty credentials for connecting to Lowkey Vault](dotnet-core/test/NoopCredentials.cs)
+* [Tests](dotnet-core/test/Tests.cs)
 
 ### Usage
 
