@@ -11,6 +11,9 @@ a key is used for encrypt/decrypt operations and database connection specific cr
 
 ### Points of interest
 
+Note: In order to better understand what is needed in general to make similar examples work, please find a generic overview
+[here](https://github.com/nagyesta/lowkey-vault/wiki/Example:-How-can-you-use-Lowkey-Vault-in-your-tests).
+
 #### .NET Framework
 
 * [Key "repository"](dotnet-framework/src/AzureKeyVaultKeyRepository.cs)
@@ -28,6 +31,7 @@ a key is used for encrypt/decrypt operations and database connection specific cr
 ### Usage
 
 1. Start Lowkey Vault by following the steps [here](https://github.com/nagyesta/lowkey-vault#quick-start-guide).
+   1. Make sure it is accessible on `https://localhost:8443`
 2. Run the tests
 
 ### Note

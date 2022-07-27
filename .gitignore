@@ -4,6 +4,11 @@
 /*/obj
 /packages
 
+/*/.idea/
+/*/*/bin
+/*/*/obj
+/*/packages
+
 lowkey-vault-example-dotnet.sln.DotSettings.user
 .idea/
 */bin
