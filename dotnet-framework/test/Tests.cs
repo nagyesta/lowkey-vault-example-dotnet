@@ -16,7 +16,7 @@ namespace test
         {
             //given
             const string secretMessage = "a secret message";
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
             var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential);
             const string keyName = "rsa-key";
@@ -35,7 +35,7 @@ namespace test
             //then
             Assert.AreEqual(secretMessage, decrypted);
         }
-        
+
         [Test]
         public void TestGetConnectionDetailsShouldReturnValidData()
         {
@@ -46,7 +46,7 @@ namespace test
             const string serverName = "ServerName\\InstanceName";
             const string userName = "admin";
             const string password = "secret123";
-            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+            DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
             var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential);
             secretClient.SetSecret(serverNameSecret, serverName);
@@ -64,6 +64,16 @@ namespace test
             Assert.AreEqual(serverName, actualServerName);
             Assert.AreEqual(userName, actualUserName);
             Assert.AreEqual(password, actualPassword);
+        }
+
+        /// <summary>
+        /// Disables server certification callback.
+        /// <br/>
+        /// <b>WARNING: Do not use in production environments.</b>
+        /// </summary>
+        private static void DisableCertificateValidation()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
         }
     }
 }

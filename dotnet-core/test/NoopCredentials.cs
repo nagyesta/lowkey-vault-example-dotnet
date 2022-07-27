@@ -5,6 +5,11 @@ using Azure.Core;
 
 namespace test
 {
+    /// <summary>
+    /// Allows us to bypass authentication when using Lowkey Vault.
+    /// <br/>
+    /// <b>WARNING: Will not work with real Azure services.</b>
+    /// </summary>
     public class NoopCredentials: TokenCredential
     {
         public override async ValueTask<AccessToken> GetTokenAsync(TokenRequestContext requestContext, CancellationToken cancellationToken)
