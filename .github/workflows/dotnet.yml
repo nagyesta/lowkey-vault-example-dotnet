@@ -46,6 +46,7 @@ jobs:
     - name: Test .NET Framework Project
       run:  |
         java -jar lowkey.jar &
+        Start-Sleep -s 5
         dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
     - name: Build .NET Core project
@@ -53,5 +54,6 @@ jobs:
     - name: Test .NET Core Project
       run:  |
         java -jar lowkey.jar &
+        Start-Sleep -s 5
         dotnet test dotnet-core/lowkey-vault-example-dotnet-core.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
