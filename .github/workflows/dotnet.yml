@@ -35,7 +35,7 @@ jobs:
       run: nuget restore dotnet-core/lowkey-vault-example-dotnet-core.sln
     - name: Download jar
       run: |
-        curl https://repo1.maven.org/maven2/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.2.11/lowkey-vault-app-1.2.11.jar --output lowkey.jar
+        curl https://oss.sonatype.org/service/local/repositories/releases/content/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.12.11/lowkey-vault-app-1.12.11.jar --output lowkey.jar
     - name: Set up JDK 11
       uses: actions/setup-java@d854b6da19cdadd9a010605529e522c2393ebd38 # tag=v3.5.0
       with:
@@ -46,7 +46,7 @@ jobs:
     - name: Test .NET Framework Project
       run:  |
         java -jar lowkey.jar &
-        Start-Sleep -s 5
+        Start-Sleep -s 10
         dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
     - name: Build .NET Core project
@@ -54,6 +54,6 @@ jobs:
     - name: Test .NET Core Project
       run:  |
         java -jar lowkey.jar &
-        Start-Sleep -s 5
+        Start-Sleep -s 10
         dotnet test dotnet-core/lowkey-vault-example-dotnet-core.sln --no-build --verbosity normal
         Stop-Job -Name "Job1"
