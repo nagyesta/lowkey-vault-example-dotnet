@@ -17,7 +17,16 @@ on:
 
 jobs:
   build:
-
+    strategy:
+      matrix:
+        module: [ core, framework ]
+        include:
+          - module: core
+            name: .Net Core
+            solution: dotnet-core/lowkey-vault-example-dotnet-core.sln
+          - module: framework
+            name: .Net Framework
+            solution: dotnet-framework/lowkey-vault-example-dotnet.sln
     runs-on: windows-latest
 
     steps:
@@ -29,31 +38,21 @@ jobs:
     - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
       with:
         nuget-version: '5.x'
-    - name: NuGet Restore .NET Framework project
-      run: nuget restore dotnet-framework/lowkey-vault-example-dotnet.sln
-    - name: NuGet Restore .NET Core project
-      run: nuget restore dotnet-core/lowkey-vault-example-dotnet-core.sln
+    - name: NuGet Restore ${{ matrix.name }} project
+      run: nuget restore ${{ matrix.solution }}
     - name: Download jar
       run: |
-        curl https://oss.sonatype.org/service/local/repositories/releases/content/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.12.11/lowkey-vault-app-1.12.11.jar --output lowkey.jar
+        curl https://repo1.maven.org/maven2/com/github/nagyesta/lowkey-vault/lowkey-vault-app/1.12.11/lowkey-vault-app-1.12.11.jar --output lowkey.jar
     - name: Set up JDK 11
       uses: actions/setup-java@d854b6da19cdadd9a010605529e522c2393ebd38 # tag=v3.5.0
       with:
         distribution: temurin
         java-version: 11
-    - name: Build .NET Framework Project
-      run: dotnet build dotnet-framework/lowkey-vault-example-dotnet.sln --no-restore
-    - name: Test .NET Framework Project
+    - name: Build ${{ matrix.name }} Project
+      run: dotnet build ${{ matrix.solution }} --no-restore
+    - name: Test ${{ matrix.name }} Project
       run:  |
         java -jar lowkey.jar &
-        Start-Sleep -s 10
-        dotnet test dotnet-framework/lowkey-vault-example-dotnet.sln --no-build --verbosity normal
-        Stop-Job -Name "Job1"
-    - name: Build .NET Core project
-      run: dotnet build dotnet-core/lowkey-vault-example-dotnet-core.sln --no-restore
-    - name: Test .NET Core Project
-      run:  |
-        java -jar lowkey.jar &
-        Start-Sleep -s 10
-        dotnet test dotnet-core/lowkey-vault-example-dotnet-core.sln --no-build --verbosity normal
+        Start-Sleep -s 5
+        dotnet test ${{ matrix.solution }} --no-build --verbosity normal
         Stop-Job -Name "Job1"
