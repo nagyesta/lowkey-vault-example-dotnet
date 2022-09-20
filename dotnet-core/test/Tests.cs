@@ -20,7 +20,11 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new NoopCredentials();
-            var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(new KeyClientOptions()));
+            var options = new KeyClientOptions()
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var keyClient = new KeyClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(options));
             const string keyName = "rsa-key";
             var createRsaKeyOptions = new CreateRsaKeyOptions(keyName)
             {
@@ -49,7 +53,11 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new NoopCredentials();
-            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(new SecretClientOptions()));
+            var options = new SecretClientOptions()
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(options));
             secretClient.SetSecret(serverNameSecret, serverName);
             secretClient.SetSecret(userNameSecret, userName);
             secretClient.SetSecret(passwordSecret, password);
