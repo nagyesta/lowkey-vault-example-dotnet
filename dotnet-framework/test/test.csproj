@@ -36,11 +36,11 @@
         <Reference Include="Azure.Core, Version=1.23.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
           <HintPath>..\packages\Azure.Core.1.23.0\lib\net461\Azure.Core.dll</HintPath>
         </Reference>
-        <Reference Include="Azure.Security.KeyVault.Keys, Version=4.3.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-          <HintPath>..\packages\Azure.Security.KeyVault.Keys.4.3.0\lib\netstandard2.0\Azure.Security.KeyVault.Keys.dll</HintPath>
+        <Reference Include="Azure.Security.KeyVault.Keys, Version=4.4.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+          <HintPath>..\packages\Azure.Security.KeyVault.Keys.4.4.0\lib\netstandard2.0\Azure.Security.KeyVault.Keys.dll</HintPath>
         </Reference>
-        <Reference Include="Azure.Security.KeyVault.Secrets, Version=4.3.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-          <HintPath>..\packages\Azure.Security.KeyVault.Secrets.4.3.0\lib\netstandard2.0\Azure.Security.KeyVault.Secrets.dll</HintPath>
+        <Reference Include="Azure.Security.KeyVault.Secrets, Version=4.4.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+          <HintPath>..\packages\Azure.Security.KeyVault.Secrets.4.4.0\lib\netstandard2.0\Azure.Security.KeyVault.Secrets.dll</HintPath>
         </Reference>
         <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
           <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
