@@ -32,7 +32,7 @@ jobs:
     steps:
     - uses: actions/checkout@2541b1294d2704b0964813337f33b291d3f8596b # tag=v3
     - name: Setup .NET
-      uses: actions/setup-dotnet@a351d9ea84bc76ec7508debf02a39d88f8b6c0c0 # tag=v2
+      uses: actions/setup-dotnet@c7e7147fd3e41056e75a761416c06f5fa781b5fb # tag=v3
       with:
         dotnet-version: 5.0.x
     - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
