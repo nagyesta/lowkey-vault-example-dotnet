@@ -35,7 +35,7 @@ jobs:
       uses: actions/setup-dotnet@45c9f236cf9a0c09d11298348f6ed06bd81914c0 # tag=v3
       with:
         dotnet-version: 5.0.x
-    - uses: nuget/setup-nuget@b2bc17b761a1d88cab755a776c7922eb26eefbfa # tag=v1
+    - uses: nuget/setup-nuget@fd9fffd6ca4541cf4152a9565835ca1a88a6eb37 # tag=v1
       with:
         nuget-version: '5.x'
     - name: NuGet Restore ${{ matrix.name }} project
