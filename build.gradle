@@ -18,15 +18,15 @@ dependencies {
 }
 
 clean.doLast {
-    file("${project.rootDir}/lowkey-vault.jar").delete()
+    file("${project.rootDir}/lowkey.jar").delete()
 }
 
 task download(type: Copy) {
     inputs.file(configurations.lowkey.asFileTree.singleFile)
-    outputs.file("${project.rootDir}/lowkey-vault.jar")
+    outputs.file("${project.rootDir}/lowkey.jar")
     from configurations.lowkey.asFileTree.singleFile
     into file("${project.rootDir}")
     rename {
-        'lowkey-vault.jar'
+        'lowkey.jar'
     }
 }
