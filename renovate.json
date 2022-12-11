@@ -7,9 +7,6 @@
     "nagyesta"
   ],
   "assigneesSampleSize": 1,
-  "docker": {
-    "pinDigests": true
-  },
   "github-actions": {
     "pinDigests": true
   }
