@@ -1,7 +1,7 @@
 ![LowkeyVault](https://raw.githubusercontent.com/nagyesta/lowkey-vault/main/.github/assets/LowkeyVault-logo-full.png)
 
 [![GitHub license](https://img.shields.io/github/license/nagyesta/lowkey-vault-example-dotnet?color=informational)](https://raw.githubusercontent.com/nagyesta/lowkey-vault-example-dotnet/main/LICENSE)
-[![.Net build](https://img.shields.io/github/workflow/status/nagyesta/lowkey-vault-example-dotnet/.NET?logo=github)](https://github.com/nagyesta/lowkey-vault-example-dotnet/actions/workflows/dotnet.yml)
+[![.Net build](https://img.shields.io/github/actions/workflow/status/nagyesta/lowkey-vault-example-dotnet/dotnet.yml?logo=github&branch=main)](https://github.com/nagyesta/lowkey-vault-example-dotnet/actions/workflows/dotnet.yml)
 [![Lowkey secure](https://img.shields.io/badge/lowkey-secure-0066CC)](https://github.com/nagyesta/lowkey-vault)
 
 # Lowkey Vault - Example .Net
