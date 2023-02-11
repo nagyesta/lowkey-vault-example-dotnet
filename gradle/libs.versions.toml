@@ -1,5 +1,5 @@
 [versions]
-lowkeyVault = "1.16.13"
+lowkeyVault = "1.17.0"
 
 [libraries]
 lowkey-vault-app = { module = "com.github.nagyesta.lowkey-vault:lowkey-vault-app", version.ref = "lowkeyVault" }
