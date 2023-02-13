@@ -29,4 +29,5 @@ task download(type: Copy) {
     rename {
         'lowkey.jar'
     }
+    doNotTrackState("Needs to re-run every time.")
 }
