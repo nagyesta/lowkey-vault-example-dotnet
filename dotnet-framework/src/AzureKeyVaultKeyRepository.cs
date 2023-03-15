@@ -22,7 +22,8 @@ namespace src
         public byte[] Encrypt(string clearText)
         {
             var key = _keyClient.GetKey(_keyName).Value;
-            return new CryptographyClient(new Uri(key.Key.Id), _credential)
+            CryptographyClientOptions options = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_3);
+            return new CryptographyClient(new Uri(key.Key.Id), _credential, options)
                 .Encrypt(EncryptParameters.RsaOaep256Parameters(Encoding.UTF8.GetBytes(clearText)))
                 .Ciphertext;
         }
@@ -30,7 +31,8 @@ namespace src
         public string Decrypt(byte[] cipherText)
         {
             var key = _keyClient.GetKey(_keyName).Value;
-            var decrypted = new CryptographyClient(new Uri(key.Key.Id), _credential)
+            CryptographyClientOptions options = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_3);
+            var decrypted = new CryptographyClient(new Uri(key.Key.Id), _credential, options)
                 .Decrypt(DecryptParameters.RsaOaep256Parameters(cipherText))
                 .Plaintext;
             return Encoding.UTF8.GetString(decrypted);

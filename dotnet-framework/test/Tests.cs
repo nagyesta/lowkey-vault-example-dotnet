@@ -18,7 +18,7 @@ namespace test
             const string secretMessage = "a secret message";
             DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
-            var options = new KeyClientOptions()
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_3)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -52,7 +52,7 @@ namespace test
             const string password = "secret123";
             DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
-            var options = new SecretClientOptions()
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
             {
                 DisableChallengeResourceVerification = true
             };
