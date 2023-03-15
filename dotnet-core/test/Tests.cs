@@ -20,7 +20,7 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new NoopCredentials();
-            var options = new KeyClientOptions()
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_3)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -32,7 +32,8 @@ namespace test
                 KeyOperations = { KeyOperation.Encrypt, KeyOperation.Decrypt, KeyOperation.WrapKey, KeyOperation.UnwrapKey }
             };
             keyClient.CreateKey(keyName, KeyType.Rsa, createRsaKeyOptions);
-            var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetClientOptions(new CryptographyClientOptions()));
+            var cryptographyClientOptions = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_3);
+            var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetClientOptions(cryptographyClientOptions));
             
             //when
             var encrypted = underTest.Encrypt(secretMessage);
@@ -53,7 +54,7 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new NoopCredentials();
-            var options = new SecretClientOptions()
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
             {
                 DisableChallengeResourceVerification = true
             };
