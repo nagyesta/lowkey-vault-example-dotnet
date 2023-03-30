@@ -31,7 +31,7 @@ namespace src
         {
             var base64Value = _secretClient.GetSecret(_certificateName).Value.Value;
             var bytes = Convert.FromBase64String(base64Value);
-            return new X509Certificate2(bytes, "", X509KeyStorageFlags.Exportable);
+            return new X509Certificate2(bytes, "", X509KeyStorageFlags.PlaintextExportable);
         }
     }
 }
