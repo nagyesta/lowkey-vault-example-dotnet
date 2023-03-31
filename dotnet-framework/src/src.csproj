@@ -35,8 +35,8 @@
         <Reference Include="Azure.Core, Version=1.30.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
           <HintPath>..\packages\Azure.Core.1.30.0\lib\net461\Azure.Core.dll</HintPath>
         </Reference>
-        <Reference Include="Azure.Security.KeyVault.Certificates, Version=4.5.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
-          <HintPath>..\packages\Azure.Security.KeyVault.Certificates.4.5.0\lib\netstandard2.0\Azure.Security.KeyVault.Certificates.dll</HintPath>
+        <Reference Include="Azure.Security.KeyVault.Certificates, Version=4.5.1.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
+          <HintPath>..\packages\Azure.Security.KeyVault.Certificates.4.5.1\lib\netstandard2.0\Azure.Security.KeyVault.Certificates.dll</HintPath>
         </Reference>
         <Reference Include="Azure.Security.KeyVault.Keys, Version=4.5.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8, processorArchitecture=MSIL">
           <HintPath>..\packages\Azure.Security.KeyVault.Keys.4.5.0\lib\netstandard2.0\Azure.Security.KeyVault.Keys.dll</HintPath>
