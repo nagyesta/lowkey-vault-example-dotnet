@@ -1,8 +1,10 @@
 using System;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using Azure.Core;
 using Azure.Core.Pipeline;
+using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Keys.Cryptography;
 using Azure.Security.KeyVault.Secrets;
@@ -74,6 +76,43 @@ namespace test
             Assert.AreEqual(serverName, actualServerName);
             Assert.AreEqual(userName, actualUserName);
             Assert.AreEqual(password, actualPassword);
+        }
+        
+        [Test]
+        public void TestGetCertificateDetailsShouldReturnValidData()
+        {
+            //given
+            const string certificateName = "certificate";
+            const string subject = "CN=example.com";
+            TokenCredential credential = new NoopCredentials();
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_3)
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(secretClientOptions));
+            var certificateClient = new CertificateClient(new Uri("https://localhost:8443/"), credential, GetClientOptions(certificateClientOptions));
+            var certificatePolicy = new CertificatePolicy("Self", subject)
+            {
+                KeyType = CertificateKeyType.Ec,
+                KeyCurveName = CertificateKeyCurveName.P256,
+                Exportable = true,
+                ContentType = CertificateContentType.Pkcs12,
+                ValidityInMonths = 12
+            };
+            certificateClient.StartCreateCertificate(certificateName, certificatePolicy).WaitForCompletion();
+            var underTest = new AzureKeyVaultCertificateRepository(secretClient, certificateName);
+            
+            //when
+            var actualCertificate = underTest.GetCertificate();
+            var actualPrivateKey = underTest.GetPrivateKey();
+
+            //then
+            Assert.AreEqual(subject, actualCertificate.Subject);
+            Assert.NotNull(actualPrivateKey);
         }
         
         private T GetClientOptions<T>(T options) where T : ClientOptions

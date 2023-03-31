@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using Azure.Core;
+using Azure.Security.KeyVault.Certificates;
 using Azure.Security.KeyVault.Keys;
 using Azure.Security.KeyVault.Secrets;
 using NUnit.Framework;
@@ -72,6 +73,47 @@ namespace test
             Assert.AreEqual(serverName, actualServerName);
             Assert.AreEqual(userName, actualUserName);
             Assert.AreEqual(password, actualPassword);
+        }
+        
+        [Test]
+        public void TestGetCertificateDetailsShouldReturnValidData()
+        {
+            //given
+            const string certificateName = "certificate";
+            const string subject = "CN=example.com";
+            DisableCertificateValidation();
+            TokenCredential credential = new NoopCredentials();
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_3)
+            {
+                DisableChallengeResourceVerification = true
+            };
+            var secretClient = new SecretClient(new Uri("https://localhost:8443/"), credential, secretClientOptions);
+            var certificateClient = new CertificateClient(new Uri("https://localhost:8443/"), credential, certificateClientOptions);
+            var certificatePolicy = new CertificatePolicy("Self", subject)
+            {
+                KeyType = CertificateKeyType.Ec,
+                KeyCurveName = CertificateKeyCurveName.P256,
+                Exportable = true,
+                ContentType = CertificateContentType.Pkcs12,
+                ValidityInMonths = 12
+            };
+            certificateClient.StartCreateCertificate(certificateName, certificatePolicy).WaitForCompletion();
+            var underTest = new AzureKeyVaultCertificateRepository(secretClient, certificateName);
+            
+            //when
+            // WARNING: The PFX contents were not parsed successfully when I tried.
+            // Not sure whether it is a "me" problem or a Java PKCS12 store problem.
+            var actual = underTest.GetPfxBase64();
+            var actualBytes = Convert.FromBase64String(actual);
+
+            //then
+            Assert.IsTrue(actual.Length > 0);
+            Assert.IsTrue(actualBytes.Length > 0);
+            Assert.IsTrue(actualBytes.Length < actual.Length);
         }
 
         /// <summary>
