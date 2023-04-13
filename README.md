@@ -7,7 +7,8 @@
 # Lowkey Vault - Example .Net
 
 This is an example for [Lowkey Vault](https://github.com/nagyesta/lowkey-vault). It demonstrates a basic scenario where
-a key is used for encrypt/decrypt operations and database connection specific credentials.
+a key is used for encrypt/decrypt operations and database connection specific credentials as well as getting a PKCS12
+store with a certificate and matching private key inside.
 
 ### Points of interest
 
@@ -18,6 +19,7 @@ Note: In order to better understand what is needed in general to make similar ex
 
 * [Key "repository"](dotnet-framework/src/AzureKeyVaultKeyRepository.cs)
 * [Secret "repository"](dotnet-framework/src/AzureKeyVaultSecretRepository.cs)
+* [Certificate "repository"](dotnet-framework/src/AzureKeyVaultCertificateRepository.cs)
 * [Empty credentials for connecting to Lowkey Vault](dotnet-framework/test/NoopCredentials.cs)
 * [Tests](dotnet-framework/test/Tests.cs)
 
@@ -25,6 +27,7 @@ Note: In order to better understand what is needed in general to make similar ex
 
 * [Key "repository"](dotnet-core/src/AzureKeyVaultKeyRepository.cs)
 * [Secret "repository"](dotnet-core/src/AzureKeyVaultSecretRepository.cs)
+* [Certificate "repository"](dotnet-core/src/AzureKeyVaultCertificateRepository.cs)
 * [Empty credentials for connecting to Lowkey Vault](dotnet-core/test/NoopCredentials.cs)
 * [Tests](dotnet-core/test/Tests.cs)
 
@@ -36,5 +39,5 @@ Note: In order to better understand what is needed in general to make similar ex
 
 ### Note
 
-This is my very first .Net project after using it for 2-3 hours, please have mercy when
-commenting on code quality!
+I am not a professional .Net developer. Please do not judge me by the code quality. I am open to any suggestions and
+improvements.
