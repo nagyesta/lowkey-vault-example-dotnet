@@ -46,7 +46,7 @@ jobs:
         distribution: temurin
         java-version: 17
     - name: Download jar
-      uses: gradle/gradle-build-action@8e02c8272aba4650563824b7012f8a86158901c6
+      uses: gradle/gradle-build-action@40b6781dcdec2762ad36556682ac74e31030cfe2
       with:
         arguments: clean download
     - name: Build ${{ matrix.name }} Project
