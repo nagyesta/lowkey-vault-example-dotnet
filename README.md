@@ -28,13 +28,21 @@ Note: In order to better understand what is needed in general to make similar ex
 * [Key "repository"](dotnet-core/src/AzureKeyVaultKeyRepository.cs)
 * [Secret "repository"](dotnet-core/src/AzureKeyVaultSecretRepository.cs)
 * [Certificate "repository"](dotnet-core/src/AzureKeyVaultCertificateRepository.cs)
-* [Empty credentials for connecting to Lowkey Vault](dotnet-core/test/NoopCredentials.cs)
-* [Tests](dotnet-core/test/Tests.cs)
+* [Empty credentials for connecting to Lowkey Vault](dotnet-core/test/NoopCredentials.cs) (Not needed when using Assumed Identity container)
+* [Docker Compose](docker-compose.yml) to allow easy testing locally
+* Tests
+  * [Tests using the empty credentials](dotnet-core/test/Tests.cs)
+  * [Tests using the DefaultAzureCredential](dotnet-core/test/ManagedIdentityTests.cs) (Skipped on Windows, uses Assumed Identity container)
 
 ### Usage
 
 1. Start Lowkey Vault by following the steps [here](https://github.com/nagyesta/lowkey-vault#quick-start-guide).
    1. Make sure it is accessible on `https://localhost:8443`
+   2. If you want to use DefaultAzureCredential
+      1. start [Assumed Identity](https://github.com/nagyesta/assumed-identity)
+      2. in the [Managed Identity tests](dotnet-core/test/ManagedIdentityTests.cs), make sure to:
+         1. Set ```IDENTITY_ENDPOINT``` environment variable to point to the `/metadata/identity/oauth2/token` path of Assumed Identity e.g., http://localhost:8080/metadata/identity/oauth2/token
+         2. Set ```IDENTITY_HEADER``` environment variable to anything (just needs to exist) e.g., `header`
 2. Run the tests
 
 ### Note
