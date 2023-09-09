@@ -1,7 +1,5 @@
 using System;
-using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography;
 using Azure.Core;
 using Azure.Core.Pipeline;
 using Azure.Security.KeyVault.Certificates;
@@ -22,7 +20,7 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new NoopCredentials();
-            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_3)
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -56,7 +54,7 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new NoopCredentials();
-            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -85,11 +83,11 @@ namespace test
             const string certificateName = "certificate";
             const string subject = "CN=example.com";
             TokenCredential credential = new NoopCredentials();
-            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
-            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_3)
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };

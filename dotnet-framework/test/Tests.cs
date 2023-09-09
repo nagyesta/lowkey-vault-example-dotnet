@@ -19,7 +19,7 @@ namespace test
             const string secretMessage = "a secret message";
             DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
-            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_3)
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -53,7 +53,7 @@ namespace test
             const string password = "secret123";
             DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
-            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -83,11 +83,11 @@ namespace test
             const string subject = "CN=example.com";
             DisableCertificateValidation();
             TokenCredential credential = new NoopCredentials();
-            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
-            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_3)
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_4)
             {
                 DisableChallengeResourceVerification = true
             };
