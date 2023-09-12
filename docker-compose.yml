@@ -8,7 +8,7 @@ services:
       - "8443:8443"
   assumed-identity:
     container_name: assumed-identity-dotnet
-    image: nagyesta/assumed-identity:1.1.5@sha256:b7b4770e4a00bf208fb777f096116b95ad9226124a63db236608289aba7ab61e
+    image: nagyesta/assumed-identity:1.1.6@sha256:617677206d084037f2e5070679eab4d2b5bd0d7ab346f43ec8da791bc3831d4a
     ports:
       - "8080:8080"
     environment:
