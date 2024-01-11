@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net.Http;
 using Azure.Core;
 using Azure.Core.Pipeline;
@@ -111,6 +112,13 @@ namespace test
             //then
             Assert.AreEqual(subject, actualCertificate.Subject);
             Assert.NotNull(actualPrivateKey);
+            
+            //broken?
+            var secret = secretClient.GetSecret(certificateName);
+            Assert.NotNull(secret?.Value?.Value);
+
+            var allSecrets = secretClient.GetPropertiesOfSecrets().ToList();
+            Assert.True(allSecrets.Any(c => c.Name.Equals(certificateName, StringComparison.OrdinalIgnoreCase)));
         }
         
         private T GetClientOptions<T>(T options) where T : ClientOptions
