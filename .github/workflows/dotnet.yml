@@ -35,7 +35,7 @@ jobs:
       uses: actions/setup-dotnet@4d6c8fcf3c8f7a60068d26b594648e99df24cee3 # v4
       with:
         dotnet-version: 6.0.x
-    - uses: nuget/setup-nuget@296fd3ccf8528660c91106efefe2364482f86d6f # v1
+    - uses: nuget/setup-nuget@a21f25cd3998bf370fde17e3f1b4c12c175172f9 # v1
       with:
         nuget-version: '6.x'
     - name: NuGet Restore ${{ matrix.name }} project
