@@ -3,10 +3,13 @@ plugins {
 }
 
 group = 'com.github.nagyesta'
-sourceCompatibility = '11'
 
 repositories {
     mavenCentral()
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
 }
 
 configurations {

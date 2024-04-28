@@ -20,11 +20,6 @@ namespace test
         [Test]
         public void TestEncryptAndDecryptShouldCancelOutEachOther()
         {
-            if (OperatingSystem.IsWindows())
-            {
-                // Turned off on the Windows GitHub Action runner as there is no compatible Assumed Identity container
-                Assert.Inconclusive("Managed Identity tests are skipped on Windows");
-            }
             // Set ENV vars to configure the token provider endpoint of the managed identity credential
             Environment.SetEnvironmentVariable("IDENTITY_ENDPOINT", "http://localhost:8080/metadata/identity/oauth2/token");
             Environment.SetEnvironmentVariable("IDENTITY_HEADER", "header");
@@ -57,11 +52,6 @@ namespace test
         [Test]
         public void TestGetConnectionDetailsShouldReturnValidData()
         {
-            if (OperatingSystem.IsWindows())
-            {
-                // Turned off on the Windows GitHub Action runner as there is no compatible Assumed Identity container
-                Assert.Inconclusive("Managed Identity tests are skipped on Windows");
-            }
             // Set ENV vars to configure the token provider endpoint of the managed identity credential
             Environment.SetEnvironmentVariable("IDENTITY_ENDPOINT", "http://localhost:8080/metadata/identity/oauth2/token");
             Environment.SetEnvironmentVariable("IDENTITY_HEADER", "header");
@@ -98,11 +88,6 @@ namespace test
         [Test]
         public void TestGetCertificateDetailsShouldReturnValidData()
         {
-            if (OperatingSystem.IsWindows())
-            {
-                // Turned off on the Windows GitHub Action runner as there is no compatible Assumed Identity container
-                Assert.Inconclusive("Managed Identity tests are skipped on Windows");
-            }
             // Set ENV vars to configure the token provider endpoint of the managed identity credential
             Environment.SetEnvironmentVariable("IDENTITY_ENDPOINT", "http://localhost:8080/metadata/identity/oauth2/token");
             Environment.SetEnvironmentVariable("IDENTITY_HEADER", "header");
