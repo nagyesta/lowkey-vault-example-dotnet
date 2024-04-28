@@ -5,11 +5,7 @@ services:
     container_name: lowkey-vault-dotnet
     image: nagyesta/lowkey-vault:2.4.2@sha256:c5cdcfb52feb0d5c556d7c4348f95d32b6ea45580d0e61c4a828a8b1ace82f45
     ports:
-      - "8443:8443"
-  assumed-identity:
-    container_name: assumed-identity-dotnet
-    image: nagyesta/assumed-identity:1.2.16@sha256:af0f02eb1cd1608a5254761f9817666a6020abe7c66dff3953aba5e904fdb72e
-    ports:
       - "8080:8080"
+      - "8443:8443"
     environment:
-      ASSUMED_ID_PORT: "8080"
+      LOWKEY_ARGS: "--server.port=8443 --app.token.port=8080"
