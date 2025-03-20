@@ -2,7 +2,8 @@
   "extends": [
     "config:recommended",
     ":gitSignOff",
-    "group:allNonMajor"
+    "group:allNonMajor",
+    "schedule:earlyMondays"
   ],
   "assignees": [
     "nagyesta"
