@@ -35,7 +35,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
     - name: Setup NuGet
       uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2
       with:
