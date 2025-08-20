@@ -3,7 +3,7 @@ version: "2"
 services:
   lowkey-vault:
     container_name: lowkey-vault-dotnet
-    image: nagyesta/lowkey-vault:3.4.33@sha256:3cba14bdf2ec7f9f99cd3afd823f4f659f501dd84424c59e93beeeedcb9e6c93
+    image: nagyesta/lowkey-vault:4.0.0@sha256:39b93f53059633c48f94021655f89d31b05176b292cf0260d36c0987acd50cad
     ports:
       - "8080:8080"
       - "8443:8443"
