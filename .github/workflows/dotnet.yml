@@ -30,11 +30,11 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@baa11fbfe1d6520db94683bd5c7a3818018e4309 # v5
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 10.0.x
     - name: Setup NuGet
       uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2
       with:
-        nuget-version: '6.x'
+        nuget-version: 7.x
     - name: NuGet Restore ${{ matrix.name }} project
       run: nuget restore ${{ matrix.solution }}
     - name: Set up JDK 25
@@ -43,7 +43,7 @@ jobs:
         distribution: temurin
         java-version: 25
     - name: Setup Gradle
-      uses: gradle/actions/setup-gradle@f29f5a9d7b09a7c6b29859002d29d24e1674c884 # v5.0.1
+      uses: gradle/actions/setup-gradle@0723195856401067f7a2779048b490ace7a47d7c # v5.0.2
     - name: Download Lowkey Vault jar
       run: ./gradlew clean download
     - name: Build ${{ matrix.name }} Project

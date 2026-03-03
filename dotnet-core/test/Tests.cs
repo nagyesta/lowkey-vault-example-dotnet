@@ -20,7 +20,7 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new NoopCredentials();
-            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_4)
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -32,7 +32,7 @@ namespace test
                 KeyOperations = { KeyOperation.Encrypt, KeyOperation.Decrypt, KeyOperation.WrapKey, KeyOperation.UnwrapKey }
             };
             keyClient.CreateKey(keyName, KeyType.Rsa, createRsaKeyOptions);
-            var cryptographyClientOptions = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_3);
+            var cryptographyClientOptions = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_6);
             var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetClientOptions(cryptographyClientOptions));
             
             //when
@@ -54,7 +54,7 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new NoopCredentials();
-            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -83,11 +83,11 @@ namespace test
             const string certificateName = "certificate";
             const string subject = "CN=example.com";
             TokenCredential credential = new NoopCredentials();
-            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_4)
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
-            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_4)
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };

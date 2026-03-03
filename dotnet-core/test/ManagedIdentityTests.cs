@@ -1,7 +1,5 @@
 using System;
-using System.Net;
 using System.Net.Http;
-using System.Security.Cryptography;
 using Azure.Core;
 using Azure.Core.Pipeline;
 using Azure.Identity;
@@ -26,7 +24,7 @@ namespace test
             //given
             const string secretMessage = "a secret message";
             TokenCredential credential = new DefaultAzureCredential(); // Will use Assumed Identity container
-            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_3)
+            var options = new KeyClientOptions(KeyClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -38,7 +36,7 @@ namespace test
                 KeyOperations = { KeyOperation.Encrypt, KeyOperation.Decrypt, KeyOperation.WrapKey, KeyOperation.UnwrapKey }
             };
             keyClient.CreateKey(keyName, KeyType.Rsa, createRsaKeyOptions);
-            var cryptographyClientOptions = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_3);
+            var cryptographyClientOptions = new CryptographyClientOptions(CryptographyClientOptions.ServiceVersion.V7_6);
             var underTest = new AzureKeyVaultKeyRepository(keyClient, credential, keyName, GetClientOptions(cryptographyClientOptions));
             
             //when
@@ -63,7 +61,7 @@ namespace test
             const string userName = "admin";
             const string password = "secret123";
             TokenCredential credential = new DefaultAzureCredential(); // Will use Assumed Identity container
-            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var options = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
@@ -95,11 +93,11 @@ namespace test
             const string certificateName = "certificate";
             const string subject = "CN=example.com";
             TokenCredential credential = new DefaultAzureCredential(); // Will use Assumed Identity container
-            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_3)
+            var secretClientOptions = new SecretClientOptions(SecretClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
-            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_3)
+            var certificateClientOptions = new CertificateClientOptions(CertificateClientOptions.ServiceVersion.V7_6)
             {
                 DisableChallengeResourceVerification = true
             };
