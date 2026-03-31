@@ -32,7 +32,7 @@ jobs:
       with:
         dotnet-version: 10.0.103
     - name: Setup NuGet
-      uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2
+      uses: nuget/setup-nuget@d105a947828025cd7a980103c35ba2bfae586d0f # v2
       with:
         nuget-version: "7.0"
     - name: NuGet Restore ${{ matrix.name }} project
