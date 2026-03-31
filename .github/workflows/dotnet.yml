@@ -34,7 +34,7 @@ jobs:
     - name: Setup NuGet
       uses: nuget/setup-nuget@323ab0502cd38fdc493335025a96c8fdb0edc71f # v2
       with:
-        nuget-version: 7.0
+        nuget-version: "7.0"
     - name: NuGet Restore ${{ matrix.name }} project
       run: nuget restore ${{ matrix.solution }}
     - name: Set up JDK 25
