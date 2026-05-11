@@ -11,5 +11,6 @@
   "assigneesSampleSize": 1,
   "github-actions": {
     "pinDigests": true
-  }
+  },
+  "ignoreDeps": ["dotnet-sdk"]
 }
