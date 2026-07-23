@@ -4,6 +4,8 @@
 [![.Net build](https://img.shields.io/github/actions/workflow/status/nagyesta/lowkey-vault-example-dotnet/dotnet.yml?logo=github&branch=main)](https://github.com/nagyesta/lowkey-vault-example-dotnet/actions/workflows/dotnet.yml)
 [![Lowkey secure](https://img.shields.io/badge/lowkey-secure-0066CC)](https://github.com/nagyesta/lowkey-vault)
 
+[<img src="https://raw.githubusercontent.com/snyk-labs/secure-developer-sample-repo/main/Scanned_By_Snyk.png" alt="Scanned By Snyk Badge" width="10%" style="display: inline-block;">](https://snyk.io/?utm_source=open-source&utm_medium=pg-ptr&utm_campaign=ref-2501-osp&utm_content=pg-cta)
+
 # Lowkey Vault - Example .Net
 
 This is an example for [Lowkey Vault](https://github.com/nagyesta/lowkey-vault). It demonstrates a basic scenario where
